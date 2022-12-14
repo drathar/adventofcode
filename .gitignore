@@ -41,7 +41,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-/src/main/kotlin/dev/drathar/aoc/generators/
-/src/main/kotlin/dev/drathar/aoc/Application.kt
-/src/main/kotlin/dev/drathar/aoc/DayComponent.kt
-/src/main/kotlin/dev/drathar/aoc/InputModule.kt
+/.idea/
+/advent-of-code-input/
