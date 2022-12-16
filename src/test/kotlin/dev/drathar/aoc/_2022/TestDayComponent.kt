@@ -8,6 +8,7 @@ import dev.drathar.aoc._2022.calendar.day02.Day02Test
 import dev.drathar.aoc._2022.calendar.day03.Day03Test
 import dev.drathar.aoc._2022.calendar.day04.Day04Test
 import dev.drathar.aoc._2022.calendar.day05.Day05Test
+import dev.drathar.aoc._2022.calendar.day06.Day06Test
 import javax.inject.Singleton
 
 
@@ -19,4 +20,5 @@ internal interface TestDayComponent : DayComponent {
     fun inject(day03Test: Day03Test)
     fun inject(day04Test: Day04Test)
     fun inject(day05Test: Day05Test)
+    fun inject(day06Test: Day06Test)
 }
