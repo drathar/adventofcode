@@ -25,7 +25,6 @@ dependencies {
     implementation("com.squareup:kotlinpoet:1.12.0")
 
     testImplementation(kotlin("test"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
 }
 
 tasks.test {
