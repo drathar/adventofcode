@@ -24,11 +24,6 @@ dependencies {
     // used for generating skeletons
     implementation("com.squareup:kotlinpoet:1.12.0")
 
-    // dependency injection library and annotation procressing
-    implementation("com.google.dagger:dagger:2.44.2")
-    kapt("com.google.dagger:dagger-compiler:2.44.2")
-    kaptTest("com.google.dagger:dagger-compiler:2.44.2")
-
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
 }
