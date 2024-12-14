@@ -6,7 +6,6 @@ import dev.drathar.aoc.generators.skeleton.SkeletonGenerator.Companion.SRC_DIREC
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
-import javax.inject.Inject
 
 object DayClass {
     private val INPUT_GENERATOR_FACTORY_PACKAGE = InputGenerator::class.java.let { "${it.packageName}.${it.simpleName}" }
@@ -23,7 +22,6 @@ object DayClass {
                 TypeSpec.classBuilder("Day$day")
                     .primaryConstructor(
                         FunSpec.constructorBuilder()
-                            .addAnnotation(Inject::class)
                             .addParameter("generatorFactory", factoryClassName)
                             .build()
                     ).addProperty(
