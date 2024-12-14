@@ -1,14 +1,12 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.20"
     application
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+kotlin {
+    jvmToolchain(17)
 }
 
 repositories {
@@ -31,10 +29,6 @@ tasks.test {
     }
 
     maxParallelForks = (Runtime.getRuntime().availableProcessors() / 3.0 * 2.0).toInt()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
 }
 
 sourceSets {
