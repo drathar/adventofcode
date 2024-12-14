@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     // used for generating skeletons
-    implementation("com.squareup:kotlinpoet:1.12.0")
+    implementation("com.squareup:kotlinpoet:2.0.0")
 
     testImplementation(kotlin("test"))
 }
