@@ -3,9 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.20"
-    kotlin("kapt") version "1.7.20"
     application
-    jacoco
 }
 
 java {
@@ -32,32 +30,11 @@ tasks.test {
         exceptionFormat = TestExceptionFormat.FULL
     }
 
-    finalizedBy(tasks.jacocoTestReport)
-
     maxParallelForks = (Runtime.getRuntime().availableProcessors() / 3.0 * 2.0).toInt()
-}
-
-tasks.jacocoTestReport {
-    dependsOn(tasks.test)
-
-    reports {
-        html.required.set(true)
-        xml.required.set(true)
-    }
-
-    classDirectories.setFrom(files(classDirectories.files.map {
-        fileTree(it) {
-            exclude("**/skeleton/**", "**/Application*")
-        }
-    }))
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
-}
-
-jacoco {
-//    toolVersion = "0.8.7"
 }
 
 sourceSets {
