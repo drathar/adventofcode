@@ -6,13 +6,13 @@ import dev.drathar.aoc.generators.skeleton.SkeletonGenerator.Companion.TEST_DIRE
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
-import javax.inject.Inject
 
 object TestClass {
     fun generateTestClass(year: String, day: String) {
         val file = FileSpec.builder("dev.drathar.aoc._$year.calendar.day$day", "Day${day}Test")
-            .addImport(ClassName("dev.drathar.aoc", "_$year"), "DaggerTestDayComponent")
-            .addImport(ClassName("org.junit.jupiter.api", "Assertions"), "assertEquals")
+            .addImport("dev.drathar.aoc._${year}.calendar.day${day}", "Day${day}")
+            .addImport("dev.drathar.aoc.generators", "InputGenerator")
+            .addImport("kotlin.test", "assertEquals")
             .addType(
                 TypeSpec.classBuilder("Day${day}Test")
                     .addModifiers(KModifier.INTERNAL)
@@ -26,26 +26,23 @@ object TestClass {
                             )
                             .build()
                     )
-                    .addFunction(
-                        FunSpec.builder("setup")
-                            .addAnnotation(ClassName("org.junit.jupiter.api", "BeforeEach"))
-                            .addStatement("DaggerTestDayComponent.create().inject(this)")
-                            .build()
-                    )
                     .addProperty(
                         PropertySpec.builder("day$day", ClassName("dev.drathar.aoc._$year.calendar.day$day", "Day$day"))
-                            .addAnnotation(Inject::class)
-                            .addModifiers(KModifier.LATEINIT)
-                            .mutable(true)
+                            .addModifiers(KModifier.PRIVATE)
+                            .initializer(
+                                CodeBlock.builder()
+                                    .addStatement("Day$day(InputGenerator.InputGeneratorFactory())")
+                                    .build()
+                            )
                             .build()
                     ).addFunction(
                         FunSpec.builder("testDay${day}PartOne")
-                            .addAnnotation(ClassName("org.junit.jupiter.api", "Test"))
+                            .addAnnotation(ClassName("kotlin.test", "Test"))
                             .addStatement("assertEquals(-1, day${day}.partOne(DAY_${day}))")
                             .build()
                     ).addFunction(
                         FunSpec.builder("testDay${day}PartTwo")
-                            .addAnnotation(ClassName("org.junit.jupiter.api", "Test"))
+                            .addAnnotation(ClassName("kotlin.test", "Test"))
                             .addStatement("assertEquals(-1, day${day}.partTwo(DAY_${day}))")
                             .build()
                     )
