@@ -10,7 +10,6 @@ import java.nio.file.Paths
 object TestClass {
     fun generateTestClass(year: String, day: String) {
         val file = FileSpec.builder("dev.drathar.aoc._$year.calendar.day$day", "Day${day}Test")
-            .addImport("dev.drathar.aoc._${year}.calendar.day${day}", "Day${day}")
             .addImport("dev.drathar.aoc.generators", "InputGenerator")
             .addImport("kotlin.test", "assertEquals")
             .addType(
