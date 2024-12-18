@@ -8,7 +8,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 object DayClass {
-    private val INPUT_GENERATOR_FACTORY_PACKAGE = InputGenerator::class.java.let { "${it.packageName}.${it.simpleName}" }
+    private val INPUT_GENERATOR_FACTORY_PACKAGE =
+        InputGenerator::class.java.let { "${it.packageName}.${it.simpleName}" }
     private val INPUT_GENERATOR_FACTORY_NAME = InputGenerator.InputGeneratorFactory::class.java.simpleName
 
     fun generateDayClass(year: String, day: String) {
@@ -33,20 +34,22 @@ object DayClass {
                     .addFunction(
                         FunSpec.builder("partOne")
                             .addParameter("filename", String::class)
-                            .addModifiers()
-                            .addStatement("return·generatorFactory.forFile(filename).readLinesAs(::day$day)·{·input·->\n  -1\n}")
+                            .returns(Int::class)
+                            .addStatement("return·generatorFactory.forFile(filename).readLinesAs(::day$day)·{·input·-> -1 }")
                             .build()
                     )
                     .addFunction(
                         FunSpec.builder("partTwo")
                             .addParameter("filename", String::class)
-                            .addStatement("return·generatorFactory.forFile(filename).readLinesAs(::day$day)·{·input·->\n  -1\n}")
+                            .returns(Int::class)
+                            .addStatement("return·generatorFactory.forFile(filename).readLinesAs(::day$day)·{·input·-> -1 }")
                             .build()
                     )
                     .addFunction(
                         FunSpec.builder("day$day")
                             .addModifiers(KModifier.PRIVATE)
                             .addParameter("line", String::class)
+                            .returns(Int::class)
                             .addStatement("return 4")
                             .build()
                     )
