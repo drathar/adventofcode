@@ -5,6 +5,7 @@ import dev.drathar.aoc.util.Direction.*
 import dev.drathar.aoc.util.findMarkedSpots
 import dev.drathar.aoc.util.findTargetAt
 import dev.drathar.aoc.util.getValueAtLocation
+import dev.drathar.aoc.util.move
 
 class Day04(
     private val generatorFactory: InputGeneratorFactory,
@@ -49,11 +50,11 @@ class Day04(
         area.findMarkedSpots('A')
             .count { location ->
                 val slashMatches = slashDirections.mapNotNull { direction ->
-                    area.getValueAtLocation(location * direction)
+                    area.getValueAtLocation(location move direction)
                 }.toSet() == targetChars
 
                 val backslashMatches = backslashDirections.mapNotNull { direction ->
-                    area.getValueAtLocation(location * direction)
+                    area.getValueAtLocation(location move direction)
                 }.toSet() == targetChars
 
                 slashMatches && backslashMatches
