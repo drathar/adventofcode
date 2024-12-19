@@ -16,3 +16,16 @@ fun <T> Area<T>.getValueAtLocation(location: Location): T? {
 
     return this[location.y][location.x]
 }
+
+fun <T> Area<T>.alter(location: Location, newTile: T): Area<T> {
+    return this.toMutableList()
+        .apply {
+            val newRow = get(location.y).toMutableList()
+                .apply {
+                    set(location.x, newTile)
+                }
+                .toList()
+            set(location.y, newRow)
+        }
+        .toList()
+}
