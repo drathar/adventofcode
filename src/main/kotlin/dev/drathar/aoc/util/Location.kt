@@ -1,4 +1,4 @@
-package dev.drathar.aoc._2024.calendar.day04
+package dev.drathar.aoc.util
 
 data class Location(val x: Int, val y: Int)
 

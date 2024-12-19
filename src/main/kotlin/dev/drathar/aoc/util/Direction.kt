@@ -1,4 +1,4 @@
-package dev.drathar.aoc._2024.calendar.day04
+package dev.drathar.aoc.util
 
 sealed class Direction(open val xDelta: Int, open val yDelta: Int) {
     data object North : Direction(0, -1)

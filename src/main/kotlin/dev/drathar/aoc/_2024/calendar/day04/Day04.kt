@@ -1,7 +1,10 @@
 package dev.drathar.aoc._2024.calendar.day04
 
-import dev.drathar.aoc._2024.calendar.day04.Direction.*
 import dev.drathar.aoc.generators.InputGenerator.InputGeneratorFactory
+import dev.drathar.aoc.util.Direction.*
+import dev.drathar.aoc.util.findMarkedSpots
+import dev.drathar.aoc.util.findTargetAt
+import dev.drathar.aoc.util.getValueAtLocation
 
 class Day04(
     private val generatorFactory: InputGeneratorFactory,
